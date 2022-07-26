@@ -51,7 +51,7 @@ function pedir_datos(){
     }
 
     if(nombre && email && contrasenia){
-        let validar = validar_rep_datos(nombre,email);
+        //llamo a funcion "validar"
         if(validar){
             //se crea el objeto usuario1
             let objeto_usuario1 = new Usuario(nombre,email,contrasenia);
@@ -64,6 +64,7 @@ function pedir_datos(){
 }
 
 //validar que los datos no se repitan
+let validar = validar_rep_datos(nombre,email);
 function validar_rep_datos(nombre,email){
     if(nombre == objeto_usuario0.nombre){
         alert("ya existe alguien con ese nombre de usuario");
