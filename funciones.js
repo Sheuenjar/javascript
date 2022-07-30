@@ -1,5 +1,5 @@
-//OBJETOS
-class Usuario {
+//Usuarios
+class Usuarios{
     constructor(nombre,email,contrasenia){
         this.nombre = nombre;
         this.email = email;
@@ -8,39 +8,48 @@ class Usuario {
     }
     mostrar_bienvenida(){
         alert("Bienvenido/a "+this.nombre+"\n"+
-        "Sus datos se guardaron correctamente\n\n"+
+        "Sus datos fueron guardados correctamente\n\n"+
         "Los datos ingresados son: \n"+
         "Nombre: "+this.nombre+"\n"+
         "E-mail: "+this.email+"\n"+
         "Su estado es "+this.activado);
     }
 }
-class Anillo{
-    constructor(precio, tamanio){
-        this.precio = precio;
-        this.tamanio = tamanio;
-    }
-    
-}
-class Envio{
-    constructor(precio, destino, empresa){
-        this.precio = precio;
-        this.destino = destino;
-        this.empresa = empresa;
-    }
+let arreglo_usuarios = new Array();
+arreglo_usuarios.push(new Usuarios("Sheuen","sheuen@gmail.com","password"));
+arreglo_usuarios.push(new Usuarios("Lucia","lucia@gmail.com","password"));
 
+function validar_usuario(nombre,email,contrasenia){
+    let i = 0;
+    while(i < arreglo_usuarios.length){
+        if(arreglo_usuarios[i].nombre == nombre && arreglo_usuarios[i].email == email && arreglo_usuarios[i].contrasenia == contrasenia){
+           return i; 
+        }
+        i++;
+    }
+    return -1;
+}
+function buscar_usuario(nombre,email){
+    let i = 0;
+    while(i < arreglo_usuarios.length){
+        if(arreglo_usuarios[i].nombre == nombre || arreglo_usuarios[i].email == email){
+           return i; 
+        }
+        i++;
+    }
+    return -1;
 }
 
-//FUNCIONES
-//datos que ingresa el usuario
-function pedir_datos(){
-    let nombre = prompt("Ingresa tu nombre?");
-    while(nombre == "" || nombre === null){
+
+//Iniciar sesion (funcion)
+function iniciar_sesion(){
+    let nombre = prompt("Para iniciar sesion ingresa tu nombre");
+    while(nombre == "" || nombre === null || parseInt(nombre)){
         alert("Ingresa tu nombre correctamente");
-        nombre = prompt("Ingresa tu nombre");
+        nombre = prompt("Para iniciar sesion ingresa tu nombre");
     }
     let email = prompt("Hola "+nombre+", ahora ingresa tu e-mail");
-    while(email == "" || email === null){
+    while(email == "" || email === null || parseInt(email)){
         alert("Ingresa tu e-mail correctamente");
         email = prompt("Hola "+nombre+", ahora ingresa tu e-mail");
     }
@@ -49,34 +58,103 @@ function pedir_datos(){
         alert("ingresa una contraseña valida");
         contrasenia = prompt("ingresa tu contraseña");
     }
-
-    if(nombre && email && contrasenia){
-        //llamo a funcion "validar"
-        if(validar){
-            //se crea el objeto usuario1
-            let objeto_usuario1 = new Usuario(nombre,email,contrasenia);
-            console.log(objeto_usuario1);
-            objeto_usuario1.mostrar_bienvenida();
-        }else{
-            alert("Intenta nuevamente ingresando otros datos");
-        }
+    let validacion = validar_usuario(nombre,email,contrasenia);
+    if(validacion >= 0){
+        arreglo_usuarios[validacion].mostrar_bienvenida();
+    }
+    else if(validacion < 0){
+        alert("Tu usuario no existe")
     }
 }
 
-//validar que los datos no se repitan
-let validar = validar_rep_datos(nombre,email);
-function validar_rep_datos(nombre,email){
-    if(nombre == objeto_usuario0.nombre){
-        alert("ya existe alguien con ese nombre de usuario");
-        return false;
+
+//Registro del Usuario
+function pedir_registro(){
+    let nombre = prompt("Ingresa tu nombre");
+    while(nombre == "" || nombre === null || parseInt(nombre)){
+        alert("Ingresa tu nombre correctamente");
+        nombre = prompt("Ingresa tu nombre");
     }
-    else if(email == objeto_usuario0.email){
-        alert("el e-mail ingresado ya esta registrado");
-        return false;
-    }else{
-        return true;
+    let email = prompt("Hola "+nombre+", ahora ingresa tu e-mail");
+    while(email == "" || email === null || parseInt(email)){
+        alert("Ingresa tu e-mail correctamente");
+        email = prompt("Hola "+nombre+", ahora ingresa tu e-mail");
+    }
+    let contrasenia = prompt("ingresa tu contraseña");
+    while(contrasenia == "" || contrasenia === null){
+        alert("ingresa una contraseña valida");
+        contrasenia = prompt("ingresa tu contraseña");
+    }
+    let validacion = buscar_usuario(nombre,email);
+    if(validacion >= 0){
+        ("El usuario o la contraseña ya existen, por favor inicia sesion o volvete a registrar con otros datos");
+    }else if(validacion < 0) {
+        arreglo_usuarios.push(new Usuarios(nombre,email,contrasenia));
+        alert("Te registraste correctamente, a continuacion inicia sesion para confirmar tu cuenta");
+        iniciar_sesion();
     }
 }
+
+
+//Productos
+class Productos{
+    constructor(nombre, piedra, categoria, precio){
+        this.nombre = nombre;
+        this.piedra = piedra;
+        this.categoria = categoria;
+        this.precio = precio;
+    }
+    mostrar_productos(){
+        return this.categoria+" "+this.nombre+" con "+this.piedra+" valor: $"+this.precio;
+    }
+}
+let arreglo_productos = new Array();
+arreglo_productos.push(new Productos("Africa", "Amatista", "Anillo", "4540"));
+arreglo_productos.push(new Productos("Tunes", "Lapislazuli", "Pulsera", "14500"));
+arreglo_productos.push(new Productos("California", "Aventurina", "Dije", "7400"));
+arreglo_productos.push(new Productos("Costa Rica", "Ambar", "Esclava", "13000"));
+arreglo_productos.push(new Productos("Amazonas", "Piedra Luna", "Aros", "9299"));
+
+function mostrar_stock(){
+    let stock = "";
+    for(let i = 0; i < arreglo_productos.length; i++){
+        stock += "\n"+arreglo_productos[i].mostrar_productos();
+    }
+    return stock;
+}
+
+//Envios a todo el pais
+class Envio{
+    constructor(empresa, destino, precio){
+        this.empresa = empresa;
+        this.destino = destino;
+        this.precio = precio;
+    }
+}
+let arreglo_envios = new Array();
+arreglo_envios.push(new Envio("Andreani","domicilio","900"));
+arreglo_envios.push(new Envio("Andreani","sucursal","700"));
+arreglo_envios.push(new Envio("Correo Argentino","domicilio","600"));
+arreglo_envios.push(new Envio("Correo Argentino","sucursal","400"));
+
+
+
+
+
+
+//FUNCIONES
+let respuesta = parseInt(prompt("Que accion deseas realizar? \n1 Iniciar sesion\n2 Registrarme\n3 Ingresar como invitado"));
+
+if(respuesta == 1){
+    iniciar_sesion();
+}else if(respuesta == 2){
+    pedir_registro();
+}
+
+
+
+
+
 
 
 
