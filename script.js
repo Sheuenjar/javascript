@@ -47,7 +47,7 @@ function buscar_usuario(nombre,email){
 //Iniciar sesion (funcion)
 function iniciar_sesion(){
     let nombre = prompt("Para iniciar sesion ingresa tu nombre");
-    while(nombre == "" || nombre === null){
+    while(nombre == "" || nombre === null || parseInt(nombre)){
         alert("Ingresa tu nombre correctamente");
         nombre = prompt("Para iniciar sesion ingresa tu nombre");
     }
@@ -89,10 +89,10 @@ function pedir_registro(){
         alert("Ingresa tu e-mail correctamente");
         email = prompt("Hola "+nombre+", ahora ingresa tu e-mail");
     }
-    let contrasenia = prompt("ingresa tu contraseña");
+    let contrasenia = prompt("ingresa una contraseña");
     while(contrasenia == "" || contrasenia === null){
         alert("ingresa una contraseña valida");
-        contrasenia = prompt("ingresa tu contraseña");
+        contrasenia = prompt("ingresa una contraseña");
     }
     let validacion = buscar_usuario(nombre, email);
     if(validacion >= 0){
