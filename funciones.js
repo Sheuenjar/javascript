@@ -19,16 +19,19 @@ let arreglo_usuarios = new Array();
 arreglo_usuarios.push(new Usuarios("Sheuen","sheuen@gmail.com","password"));
 arreglo_usuarios.push(new Usuarios("Lucia","lucia@gmail.com","password"));
 
+//valida para iniciar sesion
 function validar_usuario(nombre,email,contrasenia){
     let i = 0;
     while(i < arreglo_usuarios.length){
         if(arreglo_usuarios[i].nombre == nombre && arreglo_usuarios[i].email == email && arreglo_usuarios[i].contrasenia == contrasenia){
-           return i; 
+           return i;
         }
         i++;
     }
     return -1;
 }
+
+//busca no repeticiones para el registro
 function buscar_usuario(nombre,email){
     let i = 0;
     while(i < arreglo_usuarios.length){
@@ -68,7 +71,7 @@ function iniciar_sesion(){
 }
 
 
-//Registro del Usuario
+//Registro nuevo Usuario (funcion)
 function pedir_registro(){
     let nombre = prompt("Ingresa tu nombre");
     while(nombre == "" || nombre === null || parseInt(nombre)){
@@ -85,9 +88,9 @@ function pedir_registro(){
         alert("ingresa una contraseña valida");
         contrasenia = prompt("ingresa tu contraseña");
     }
-    let validacion = buscar_usuario(nombre,email);
+    let validacion = buscar_usuario(nombre, email);
     if(validacion >= 0){
-        ("El usuario o la contraseña ya existen, por favor inicia sesion o volvete a registrar con otros datos");
+        alert("El usuario o la contraseña ya existen, inicia sesion o volvete a registrar con otros datos");
     }else if(validacion < 0) {
         arreglo_usuarios.push(new Usuarios(nombre,email,contrasenia));
         alert("Te registraste correctamente, a continuacion inicia sesion para confirmar tu cuenta");
@@ -118,7 +121,7 @@ arreglo_productos.push(new Productos("Amazonas", "Piedra Luna", "Aros", "9299"))
 function mostrar_stock(){
     let stock = "";
     for(let i = 0; i < arreglo_productos.length; i++){
-        stock += "\n"+arreglo_productos[i].mostrar_productos();
+        stock += "\n"+(i+1)+" "+arreglo_productos[i].mostrar_productos();
     }
     return stock;
 }
@@ -142,13 +145,22 @@ arreglo_envios.push(new Envio("Correo Argentino","sucursal","400"));
 
 
 
-//FUNCIONES
-let respuesta = parseInt(prompt("Que accion deseas realizar? \n1 Iniciar sesion\n2 Registrarme\n3 Ingresar como invitado"));
+//FUNCIONES aca empieza a interactuar con el usuario
+let respuesta = prompt("Que accion deseas realizar? \n1 Iniciar sesion\n2 Registrarme\n3 Ingresar como invitado");
+while(respuesta == "" || respuesta === null){
+    alert("Para seleccionar una opcion ingresa un numero");
+    respuesta = prompt("Que accion deseas realizar? \n1 Iniciar sesion\n2 Registrarme\n3 Ingresar como invitado");
+}
 
 if(respuesta == 1){
     iniciar_sesion();
+
 }else if(respuesta == 2){
     pedir_registro();
+
+}else if(respuesta == 3){
+    let comprar = prompt(mostrar_stock());
+        arreglo_productos[comprar].mostrar_productos();
 }
 
 
