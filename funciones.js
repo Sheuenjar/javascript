@@ -47,7 +47,7 @@ function buscar_usuario(nombre,email){
 //Iniciar sesion (funcion)
 function iniciar_sesion(){
     let nombre = prompt("Para iniciar sesion ingresa tu nombre");
-    while(nombre == "" || nombre === null || parseInt(nombre)){
+    while(nombre == "" || nombre === null){
         alert("Ingresa tu nombre correctamente");
         nombre = prompt("Para iniciar sesion ingresa tu nombre");
     }
@@ -64,9 +64,11 @@ function iniciar_sesion(){
     let validacion = validar_usuario(nombre,email,contrasenia);
     if(validacion >= 0){
         arreglo_usuarios[validacion].mostrar_bienvenida();
+        let comprar = prompt(mostrar_stock()+"\n\nElegi el producto ingresando su numero");
+        alert(arreglo_productos[comprar-1].mostrar_productos());
     }
     else if(validacion < 0){
-        alert("Tu usuario no existe")
+        alert("Tu usuario, e-mail y/o contraseña no existe")
     }
 }
 
@@ -147,7 +149,7 @@ arreglo_envios.push(new Envio("Correo Argentino","sucursal","400"));
 
 //FUNCIONES aca empieza a interactuar con el usuario
 let respuesta = prompt("Que accion deseas realizar? \n1 Iniciar sesion\n2 Registrarme\n3 Ingresar como invitado");
-while(respuesta == "" || respuesta === null){
+while(respuesta == "" || respuesta === null || isNaN(respuesta)){
     alert("Para seleccionar una opcion ingresa un numero");
     respuesta = prompt("Que accion deseas realizar? \n1 Iniciar sesion\n2 Registrarme\n3 Ingresar como invitado");
 }
@@ -158,9 +160,12 @@ if(respuesta == 1){
 }else if(respuesta == 2){
     pedir_registro();
 
-}else if(respuesta == 3){
     let comprar = prompt(mostrar_stock());
-        arreglo_productos[comprar].mostrar_productos();
+    alert(arreglo_productos[comprar-1].mostrar_productos());
+
+}else if(respuesta == 3){
+    let comprar = prompt(mostrar_stock()+"\n\nElegi el producto ingresando su numero");
+    alert(arreglo_productos[comprar-1].mostrar_productos());
 }
 
 
