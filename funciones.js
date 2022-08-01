@@ -65,6 +65,10 @@ function iniciar_sesion(){
     if(validacion >= 0){
         arreglo_usuarios[validacion].mostrar_bienvenida();
         let comprar = prompt(mostrar_stock()+"\n\nElegi el producto ingresando su numero");
+        while(comprar == "" || comprar === null || isNaN(comprar)){
+            alert("Ingresa un numero para elegir un producto")
+            comprar = prompt(mostrar_stock()+"\n\nElegi el producto ingresando su numero");
+        }
         alert(arreglo_productos[comprar-1].mostrar_productos());
     }
     else if(validacion < 0){
@@ -160,11 +164,13 @@ if(respuesta == 1){
 }else if(respuesta == 2){
     pedir_registro();
 
-    let comprar = prompt(mostrar_stock());
-    alert(arreglo_productos[comprar-1].mostrar_productos());
-
 }else if(respuesta == 3){
     let comprar = prompt(mostrar_stock()+"\n\nElegi el producto ingresando su numero");
+    while(comprar == "" || comprar === null || isNaN(comprar)){
+        alert("Ingresa un numero para elegir un producto")
+        comprar = prompt(mostrar_stock()+"\n\nElegi el producto ingresando su numero");
+    }
+
     alert(arreglo_productos[comprar-1].mostrar_productos());
 }
 
