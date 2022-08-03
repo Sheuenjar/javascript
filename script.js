@@ -8,7 +8,7 @@ class Usuarios{
     }
     mostrar_bienvenida(){
         alert("Bienvenido/a "+this.nombre+"\n"+
-        "Sus datos fueron guardados correctamente\n\n"+
+        "Tus datos fueron guardados correctamente\n\n"+
         "Los datos ingresados son: \n"+
         "Nombre: "+this.nombre+"\n"+
         "E-mail: "+this.email+"\n"+
@@ -96,7 +96,7 @@ function pedir_registro(){
     }
     let validacion = buscar_usuario(nombre, email);
     if(validacion >= 0){
-        alert("El usuario o la contraseña ya existen, inicia sesion o volvete a registrar con otros datos");
+        alert("El usuario o el e-mail ya fueron registrados, inicia sesion o volvete a registrar con otros datos");
     }else if(validacion < 0) {
         arreglo_usuarios.push(new Usuarios(nombre,email,contrasenia));
         alert("Te registraste correctamente, a continuacion inicia sesion para confirmar tu cuenta");
@@ -170,12 +170,8 @@ if(respuesta == 1){
         alert("Ingresa un numero para elegir un producto")
         comprar = prompt(mostrar_stock()+"\n\nElegi el producto ingresando su numero");
     }
-
     alert(arreglo_productos[comprar-1].mostrar_productos());
 }
-
-
-
 
 
 
