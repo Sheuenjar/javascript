@@ -124,13 +124,25 @@ arreglo_productos.push(new Productos("California", "Aventurina", "Dije", "7400")
 arreglo_productos.push(new Productos("Costa Rica", "Ambar", "Esclava", "13000"));
 arreglo_productos.push(new Productos("Amazonas", "Piedra Luna", "Aros", "9299"));
 
+//funcion mostrar arreglo
+function mostrar_stock(){
+    let mensaje = "Los productos en stock son: \n";
+    // para cada producto aplica ese mensaje 
+    arreglo_productos.forEach((producto) => {
+        mensaje += "\n"+producto.mostrar_productos();
+    })
+    alert(mensaje);
+}
+
+/* 
 function mostrar_stock(){
     let stock = "";
     for(let i = 0; i < arreglo_productos.length; i++){
         stock += "\n"+(i+1)+" "+arreglo_productos[i].mostrar_productos();
     }
     return stock;
-}
+} */
+
 
 //Envios a todo el pais
 class Envio{
@@ -151,8 +163,45 @@ arreglo_envios.push(new Envio("Correo Argentino","sucursal","400"));
 
 
 
+
 //APLICA FUNCIONES - aca empieza a interactuar con el usuario
-let respuesta = prompt("Que accion deseas realizar? \n1 Iniciar sesion\n2 Registrarme\n3 Ingresar como invitado");
+let menu = true;
+while (menu){
+    let opciones = "Que te gustaria realizar?";
+    opciones += "\n1) Iniciar sesion";
+    opciones += "\n2) Registrarme";
+    opciones += "\n3) Ingresar como invitado";
+    opciones += "\n4) Salir";
+
+    let respuesta = prompt(opciones);
+
+    switch (respuesta){
+        case "1":
+            iniciar_sesion();
+            break;
+        case "2":
+            pedir_registro();
+            break;
+        case "3":
+            mostrar_stock();
+            break;
+        case "4":
+            alert("Gracias por utilizar mi sitio web");
+            menu = false;
+            break;
+        case null:
+            alert("Gracias por utilizar mi sitio web");
+            menu = false;
+            break;
+        default:
+            alert("No ingresaste una opcion valida");
+    }
+}
+
+
+
+/* 
+let respuesta = prompt("Que te gustaria realizar? \n1 Iniciar sesion\n2 Registrarme\n3 Ingresar como invitado");
 while(respuesta == "" || respuesta === null || isNaN(respuesta)){
     alert("Para seleccionar una opcion ingresa un numero");
     respuesta = prompt("Que accion deseas realizar? \n1 Iniciar sesion\n2 Registrarme\n3 Ingresar como invitado");
@@ -172,7 +221,7 @@ if(respuesta == 1){
     }
     alert(arreglo_productos[comprar-1].mostrar_productos());
 }
-
+ */
 
 
 
