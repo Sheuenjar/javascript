@@ -151,7 +151,7 @@ arreglo_envios.push(new Envio("Correo Argentino","sucursal","400"));
 
 
 
-//FUNCIONES aca empieza a interactuar con el usuario
+//APLICA FUNCIONES - aca empieza a interactuar con el usuario
 let respuesta = prompt("Que accion deseas realizar? \n1 Iniciar sesion\n2 Registrarme\n3 Ingresar como invitado");
 while(respuesta == "" || respuesta === null || isNaN(respuesta)){
     alert("Para seleccionar una opcion ingresa un numero");
