@@ -64,12 +64,7 @@ function iniciar_sesion(){
     let validacion = validar_usuario(nombre,email,contrasenia);
     if(validacion >= 0){
         arreglo_usuarios[validacion].mostrar_bienvenida();
-        let comprar = prompt(mostrar_stock()+"\n\nElegi el producto ingresando su numero");
-        while(comprar == "" || comprar === null || isNaN(comprar)){
-            alert("Ingresa un numero para elegir un producto")
-            comprar = prompt(mostrar_stock()+"\n\nElegi el producto ingresando su numero");
-        }
-        alert(arreglo_productos[comprar-1].mostrar_productos());
+        comprar();
     }
     else if(validacion < 0){
         alert("Tu usuario, e-mail y/o contraseña no existe")
@@ -125,6 +120,9 @@ arreglo_productos.push(new Productos("California", "Aventurina", "Dije", "7400",
 arreglo_productos.push(new Productos("Costa Rica", "Ambar", "Esclava", "13000", 4));
 arreglo_productos.push(new Productos("Amazonas", "Piedra Luna", "Aros", "9299", 5));
 
+//pendiente carrito
+let arreglo_carrito = new Array();
+
 //funcion mostrar arreglo
 function mostrar_stock(){
     let mensaje = "Los productos en stock son: \n";
@@ -135,7 +133,7 @@ function mostrar_stock(){
     return mensaje;
 }
 
-
+//funcion seleccionar producto del arreglo
 function comprar(){
     let compra = prompt(mostrar_stock()+"\n\nElegi el producto ingresando su numero");
     while(compra == "" || isNaN(compra)){
@@ -143,6 +141,14 @@ function comprar(){
         compra = prompt(mostrar_stock()+"\n\nElegi el producto ingresando su numero");
     }
     alert(arreglo_productos[compra-1].mostrar_productos());
+}
+
+function stock_productos(arreglo){
+if (arreglo.length == 0){
+    alert("No hay productos en el array")
+    return false;
+    }
+    return true;
 }
 
 
