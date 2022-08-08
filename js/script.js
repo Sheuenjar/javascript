@@ -107,22 +107,23 @@ function pedir_registro(){
 
 //Productos
 class Productos{
-    constructor(nombre, piedra, categoria, precio){
+    constructor(nombre, piedra, categoria, precio, id){
         this.nombre = nombre;
         this.piedra = piedra;
         this.categoria = categoria;
         this.precio = precio;
+        this.id = id;
     }
     mostrar_productos(){
-        return this.categoria+" "+this.nombre+" con "+this.piedra+" valor: $"+this.precio;
+        return this.id+") "+this.categoria+" "+this.nombre+" con "+this.piedra+" valor: $"+this.precio;
     }
 }
 let arreglo_productos = new Array();
-arreglo_productos.push(new Productos("Africa", "Amatista", "Anillo", "4540"));
-arreglo_productos.push(new Productos("Tunes", "Lapislazuli", "Pulsera", "14500"));
-arreglo_productos.push(new Productos("California", "Aventurina", "Dije", "7400"));
-arreglo_productos.push(new Productos("Costa Rica", "Ambar", "Esclava", "13000"));
-arreglo_productos.push(new Productos("Amazonas", "Piedra Luna", "Aros", "9299"));
+arreglo_productos.push(new Productos("Africa", "Amatista", "Anillo", "4540", 1));
+arreglo_productos.push(new Productos("Tunes", "Lapislazuli", "Pulsera", "14500", 2));
+arreglo_productos.push(new Productos("California", "Aventurina", "Dije", "7400", 3));
+arreglo_productos.push(new Productos("Costa Rica", "Ambar", "Esclava", "13000", 4));
+arreglo_productos.push(new Productos("Amazonas", "Piedra Luna", "Aros", "9299", 5));
 
 //funcion mostrar arreglo
 function mostrar_stock(){
@@ -131,17 +132,18 @@ function mostrar_stock(){
     arreglo_productos.forEach((producto) => {
         mensaje += "\n"+producto.mostrar_productos();
     })
-    alert(mensaje);
+    return mensaje;
 }
 
-/* 
-function mostrar_stock(){
-    let stock = "";
-    for(let i = 0; i < arreglo_productos.length; i++){
-        stock += "\n"+(i+1)+" "+arreglo_productos[i].mostrar_productos();
+
+function comprar(){
+    let compra = prompt(mostrar_stock()+"\n\nElegi el producto ingresando su numero");
+    while(compra == "" || isNaN(compra)){
+        alert("Ingresa un numero para elegir un producto")
+        compra = prompt(mostrar_stock()+"\n\nElegi el producto ingresando su numero");
     }
-    return stock;
-} */
+    alert(arreglo_productos[compra-1].mostrar_productos());
+}
 
 
 //Envios a todo el pais
@@ -183,7 +185,7 @@ while (menu){
             pedir_registro();
             break;
         case "3":
-            mostrar_stock();
+            comprar();
             break;
         case "4":
             alert("Gracias por utilizar mi sitio web");
@@ -200,28 +202,9 @@ while (menu){
 
 
 
-/* 
-let respuesta = prompt("Que te gustaria realizar? \n1 Iniciar sesion\n2 Registrarme\n3 Ingresar como invitado");
-while(respuesta == "" || respuesta === null || isNaN(respuesta)){
-    alert("Para seleccionar una opcion ingresa un numero");
-    respuesta = prompt("Que accion deseas realizar? \n1 Iniciar sesion\n2 Registrarme\n3 Ingresar como invitado");
-}
 
-if(respuesta == 1){
-    iniciar_sesion();
 
-}else if(respuesta == 2){
-    pedir_registro();
 
-}else if(respuesta == 3){
-    let comprar = prompt(mostrar_stock()+"\n\nElegi el producto ingresando su numero");
-    while(comprar == "" || comprar === null || isNaN(comprar)){
-        alert("Ingresa un numero para elegir un producto")
-        comprar = prompt(mostrar_stock()+"\n\nElegi el producto ingresando su numero");
-    }
-    alert(arreglo_productos[comprar-1].mostrar_productos());
-}
- */
 
 
 
