@@ -143,7 +143,7 @@ function comprar(){
     alert(arreglo_productos[compra-1].mostrar_productos());
 }
 
-function stock_productos(arreglo){
+function validar_stock_productos(arreglo){
 if (arreglo.length == 0){
     alert("No hay productos en el array")
     return false;
