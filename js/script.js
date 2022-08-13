@@ -1,4 +1,10 @@
-//puedo pushear este comentario
+
+//identifico al parrafo sobre el input
+let titulo = document.getElementById("titulo");
+//le cambio su contenido
+titulo.textContent = "Ingresar Productos";
+
+
 
 //Usuarios
 class Usuarios{
@@ -210,6 +216,9 @@ while (menu){
 
 
 
+//identifico el contenedor donde va a estar la lista
+let contenedor = document.getElementById("contenedor");
+//creo la lista
 
 
 

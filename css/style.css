@@ -1,0 +1,25 @@
+/* TODAS LAS PAGINAS */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    }
+body {
+    background-color: #d9d9d9; 
+    }
+h1 {
+    padding-top: 56px;
+    font-size: 2.5rem;
+    text-align: center;
+    }
+h2 {
+    text-align: center;
+}
+p {
+    text-align: center;
+    font-size: 18px;
+    }
+    
+
+
