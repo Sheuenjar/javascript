@@ -1,11 +1,4 @@
 
-//identifico al parrafo sobre el input
-let titulo = document.getElementById("titulo");
-//le cambio su contenido
-titulo.textContent = "Ingresar Productos";
-
-
-
 //Usuarios
 class Usuarios{
     constructor(nombre,email,contrasenia){
@@ -216,9 +209,44 @@ while (menu){
 
 
 
-//identifico el contenedor donde va a estar la lista
-let contenedor = document.getElementById("contenedor");
-//creo la lista
+/* EVENTOS */
+
+//identifico al parrafo sobre el input
+let titulo = document.getElementById("titulo");
+//le cambio su contenido
+titulo.textContent = "Selecciona los Productos";
+
+//identifico el contenedor de productos
+let contenedorCajasProductos = document.getElementById("contenedorCajasProductos");
+
+for (let i = 0; i<arreglo_productos.length; i++){
+    let producto = arreglo_productos[i];
+    crearCajaProducto(producto);
+}
+
+function crearCajaProducto(producto){
+    let cajaProducto = document.createElement("div");
+    let tituloProducto = document.createElement("p");
+    tituloProducto.textContent = producto.mostrar_productos();
+    //cajaproducto va a ser papa de tituloproducto
+    cajaProducto.appendChild(tituloProducto);
+    //coloco al producto en su caja
+    contenedorCajasProductos.appendChild(cajaProducto);
+
+    //cuando paso el cursor..
+    cajaProducto.addEventListener("mouseover",()=>{
+        cajaProducto.style.backgroundColor = "grey";
+    });
+    //cuando dejo de pasar el cursor..
+    cajaProducto.addEventListener("mouseout",()=>{
+        cajaProducto.style.backgroundColor = "white"
+    });
+
+    cajaProducto.addEventListener("click",()=>{
+        contenedorCajasProductos.removeChild(cajaProducto);
+
+    })
+}
 
 
 
