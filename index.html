@@ -25,11 +25,65 @@
     <p id="titulo">abri la consola para informacion detallada</p>
     
     <!-- EVENTOS -->
-    <!-- <input type="text" placeholder="productos" id="inputProductos">
-    <button type="submit" id="agregarProducto">Agregar</button> -->
+    <div class="divFormularios">
+        <h3>Iniciar Sesion</h3>
+
+        <div id="avisos"></div>
+
+        <form>
+            <input type="text" placeholder="Nombre o e-mail"><br><br>
+            <input type="password" placeholder="Contraseña"><br><br>
+        </form>
+    </div>
+
 
     <!-- aca van a aparecer los productos de mi array -->
     <div id="contenedorCajasProductos"></div>
+
+
+    <!-- event.target, para listas plegables -->
+    <h2>event.target</h2>
+    <p>Clickear en los items para abrir y cerrar sublistas</p>
+    <ul class="list" id="subitemList">
+        <li class="item2">Pulseras
+            <ul class="sublist">
+                <li class="subitem">Subitem 1.1</li>
+                <li class="subitem">Subitem 1.2</li>
+                <li class="subitem">Subitem 1.3</li>
+                <li class="subitem">Subitem 1.4</li>
+                <li class="subitem">Subitem 1.5</li>
+            </ul>
+        </li>
+        <li class="item2">Dijes
+            <ul class="sublist">
+                <li class="subitem">Subitem 2.1</li>
+                <li class="subitem">Subitem 2.2</li>
+            </ul>
+        </li>
+        <li class="item2">Aros
+            <ul class="sublist">
+                <li class="subitem">Subitem 3.1</li>
+                <li class="subitem">Subitem 3.2</li>
+                <li class="subitem">Subitem 3.3</li>
+            </ul>
+        </li>
+        <li class="item2">Anillos
+            <ul class="sublist">
+                <li class="subitem">Subitem 4.1</li>
+                <li class="subitem">Subitem 4.2</li>
+                <li class="subitem">Subitem 4.3</li>
+                <li class="subitem">Subitem 4.4</li>
+                <li class="subitem">Subitem 4.5</li>
+            </ul>
+        </li>
+        <li class="item2">Esclavas
+            <ul class="sublist">
+                <li class="subitem">Subitem 5.1</li>
+                <li class="subitem">Subitem 5.2</li>
+            </ul>
+        </li>
+    </ul>
+
 
 
 

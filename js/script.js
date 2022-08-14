@@ -210,11 +210,11 @@ while (menu){
 
 
 /* EVENTOS */
-
 //identifico al parrafo sobre el input
 let titulo = document.getElementById("titulo");
 //le cambio su contenido
 titulo.textContent = "Selecciona los Productos";
+
 
 //identifico el contenedor de productos
 let contenedorCajasProductos = document.getElementById("contenedorCajasProductos");
@@ -249,6 +249,19 @@ function crearCajaProducto(producto){
 }
 
 
+//event.target
+let subitemList = document.getElementById("subitemList");
+
+subitemList.addEventListener('click', (event) => {
+    //Objeto de evento
+    if(event.target.className === 'item2'){
+        if(event.target.children[0].style.display === "block"){
+            event.target.children[0].style.display = "none";
+        } else {
+            event.target.children[0].style.display = "block";
+        }
+    }
+});
 
 
 
