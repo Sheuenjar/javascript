@@ -1,3 +1,4 @@
+
 //Productos
 class Productos{
     constructor(nombre, piedra, categoria, precio, id){
@@ -47,3 +48,39 @@ if (arreglo.length == 0){
     }
     return true;
 }
+
+//EVENTOS
+//identifico el contenedor de productos
+let contenedorCajasProductos = document.getElementById("contenedorCajasProductos");
+
+for (let i = 0; i<arreglo_productos.length; i++){
+    let producto = arreglo_productos[i];
+    crearCajaProducto(producto);
+}
+
+function crearCajaProducto(producto){
+    let cajaProducto = document.createElement("div");
+    let tituloProducto = document.createElement("p");
+    tituloProducto.textContent = producto.mostrar_productos();
+    //cajaproducto va a ser papa de tituloproducto
+    cajaProducto.appendChild(tituloProducto);
+    //coloco al producto en su caja
+    contenedorCajasProductos.appendChild(cajaProducto);
+
+    //MOUSEOVER cuando paso el cursor..
+    cajaProducto.addEventListener("mouseover",()=>{
+        cajaProducto.style.backgroundColor = "grey";
+    });
+    //MOUSEOUT cuando dejo de pasar el cursor..
+    cajaProducto.addEventListener("mouseout",()=>{
+        cajaProducto.style.backgroundColor = "white"
+    });
+
+    //elimina el producto
+    cajaProducto.addEventListener("click",()=>{
+        contenedorCajasProductos.removeChild(cajaProducto);
+
+    })
+}
+
+

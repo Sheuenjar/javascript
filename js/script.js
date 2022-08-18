@@ -44,55 +44,6 @@ let titulo = document.getElementById("titulo");
 titulo.textContent = "Selecciona los Productos";
 
 
-//identifico el contenedor de productos
-let contenedorCajasProductos = document.getElementById("contenedorCajasProductos");
-
-for (let i = 0; i<arreglo_productos.length; i++){
-    let producto = arreglo_productos[i];
-    crearCajaProducto(producto);
-}
-
-function crearCajaProducto(producto){
-    let cajaProducto = document.createElement("div");
-    let tituloProducto = document.createElement("p");
-    tituloProducto.textContent = producto.mostrar_productos();
-    //cajaproducto va a ser papa de tituloproducto
-    cajaProducto.appendChild(tituloProducto);
-    //coloco al producto en su caja
-    contenedorCajasProductos.appendChild(cajaProducto);
-
-    //MOUSEOVER cuando paso el cursor..
-    cajaProducto.addEventListener("mouseover",()=>{
-        cajaProducto.style.backgroundColor = "grey";
-    });
-    //MOUSEOUT cuando dejo de pasar el cursor..
-    cajaProducto.addEventListener("mouseout",()=>{
-        cajaProducto.style.backgroundColor = "white"
-    });
-
-    //elimina el producto
-    cajaProducto.addEventListener("click",()=>{
-        contenedorCajasProductos.removeChild(cajaProducto);
-
-    })
-}
-
-
-//event.target
-let subitemList = document.getElementById("subitemList");
-
-//event = click
-subitemList.addEventListener('click', (event) => {
-    //Objeto de evento
-    if(event.target.className === 'item2'){
-        if(event.target.children[0].style.display === "block"){
-            event.target.children[0].style.display = "none";
-        } else {
-            event.target.children[0].style.display = "block";
-        }
-    }
-});
-
 
 
 
