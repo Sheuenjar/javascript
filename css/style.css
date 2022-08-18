@@ -11,6 +11,13 @@ body {
     justify-content: center;
     }
 
+.divFormularios {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
     /* EVENTOS */
     /* cajas con productos */
 #contenedorCajasProductos{
