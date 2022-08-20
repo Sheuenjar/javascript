@@ -41,7 +41,7 @@ while (menu){
 //identifico al parrafo sobre los input
 let titulo = document.getElementById("titulo");
 //le cambio su contenido
-titulo.textContent = "Selecciona los Productos";
+/* titulo.textContent = "Selecciona los Productos"; */
 
 
 

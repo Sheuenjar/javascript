@@ -7,11 +7,6 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>Javascript Proyecto</title>
 </head>
-<style>
-    body {
-        background-color: rgba(45, 45, 56, 0.479);
-    }
-</style>
 <body>
 
     <h1>¡Hola!</h1>
@@ -31,20 +26,26 @@
         <br><div id="avisos"></div><br>
 
         <form>
-            <input type="text" placeholder="Nombre del producto"><br>
-            <br><input type="text" placeholder="Piedra natural"><br>
-            <br><input type="text" placeholder="Categoria"><br>
-            <br><input type="text" placeholder="precio"><br>
+            <input type="text" placeholder="Nombre del producto" id="nombreProducto"><br>
+            <br><input type="text" placeholder="Piedra natural" id="piedraProducto"><br>
+            <br><input type="text" placeholder="Categoria" id="categoriaProducto"><br>
+            <br><input type="text" placeholder="precio" id="precioProducto"><br>
+            <br><button type="button" id="btn_crear_producto">Crear Producto</button>
         </form>
     </div>
 
 
     <!-- aca van a aparecer los productos de mi array -->
-    <br><h2>productos</h2>
-    <br><p>selecciona el producto para agregarlo al carrito</p>
+    <br><h2>Productos</h2>
+    <br><p>selecciona el producto para dejar de verlo</p>
+
     <div id="contenedorCajasProductos">
     </div>
 
+
+    <br><br><h2>Carrito</h2>
+    <div id="contenedorCajasCarrito">
+    </div>
 
 
 
@@ -53,6 +54,8 @@
 
     <script src="./js/usuarios.js"></script>
     <script src="./js/productos.js"></script>
+    <script src="./js/carrito.js"></script>
+    <script src="./js/envios.js"></script>
     <script src="./js/script.js"></script>
 </body>
 </html>
