@@ -67,29 +67,10 @@ function generarProducto(){
     arreglo_productos.push(producto);
 
     crearCajaProducto(producto);
-}
-
-function generarCardProducto(producto){
-    //declara y crea un elemento
-    let new_div = document.createElement('div');
-    let new_h2 = document.createElement('h2');
-    //le crea un id concatenacion
-    new_div.id = 'div'+producto.nombre+producto.piedra;
-    new_h2.textContent = producto.categoria+' '+producto.nombre+'con piedra '+producto.piedra;
-
-    let new_p = document.createElement('p');
-    new_p.textContent = '$'+producto.precio;
-    
-    new_div.appendChild(new_h2);
-    new_div.appendChild(new_p);
-
-    //
-    let contenedor = document.getElementById('contenedorCajas');
-    contenedor.appendChild(new_div);
-
     resetear_form();
-
 }
+
+
 
 function resetear_form(){
     document.getElementById('nombreProducto').value = '';

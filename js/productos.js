@@ -80,10 +80,33 @@ function crearCajaProducto(producto){
     //elimina el producto
     cajaProducto.addEventListener("click",()=>{
         contenedorCajasProductos.removeChild(cajaProducto);
-
+        crearCajaCarrito(producto);
     })
 }
 
 
 
+function crearCajaCarrito(producto){
+    let cajaProducto = document.createElement("div");
+    let tituloProducto = document.createElement("p");
+    tituloProducto.textContent = producto.mostrar_productos();
+    //cajaproducto va a ser papa de tituloproducto
+    cajaProducto.appendChild(tituloProducto);
+    //coloco al producto en su caja
+    contenedorCajasCarrito.appendChild(cajaProducto);
 
+    //MOUSEOVER cuando paso el cursor..
+    cajaProducto.addEventListener("mouseover",()=>{
+        cajaProducto.style.backgroundColor = "grey";
+    });
+    //MOUSEOUT cuando dejo de pasar el cursor..
+    cajaProducto.addEventListener("mouseout",()=>{
+        cajaProducto.style.backgroundColor = "white"
+    });
+
+    //elimina el producto
+    cajaProducto.addEventListener("click",()=>{
+        contenedorCajasCarrito.removeChild(cajaProducto);
+        crearCajaProducto(producto);
+    })
+}
