@@ -49,6 +49,7 @@ if (arreglo.length == 0){
     return true;
 }
 
+
 //EVENTOS
 //identifico el contenedor de productos
 let contenedorCajasProductos = document.getElementById("contenedorCajasProductos");
@@ -82,5 +83,7 @@ function crearCajaProducto(producto){
 
     })
 }
+
+
 
 

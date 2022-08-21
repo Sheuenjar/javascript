@@ -1,15 +1,6 @@
 
-class Producto{
-    constructor(nombre,piedra,categoria,precio){
-        this.nombre = nombre;
-        this.piedra = piedra;
-        this.categoria = categoria;
-        this.precio = precio;
-    }
-    
-}
 
-//declaro carrito arreglp
+//declaro carrito arreglo
 let arreglo_carrito = new Array();
 //declaro avisos
 let avisos = document.getElementById('avisos');
@@ -71,11 +62,11 @@ function generarProducto(){
     let precio = document.getElementById('precioProducto').value;
 
     //crea el objeto
-    let producto = new Producto(nombre,piedra,categoria,precio);
+    let producto = new Productos(nombre,piedra,categoria,precio);
     //pusheo el objeto al array
     arreglo_productos.push(producto);
 
-    generarCardProducto(producto);
+    crearCajaProducto(producto);
 }
 
 function generarCardProducto(producto){
@@ -93,7 +84,7 @@ function generarCardProducto(producto){
     new_div.appendChild(new_p);
 
     //
-    let contenedor = document.getElementById('contenedorCajasCarrito');
+    let contenedor = document.getElementById('contenedorCajas');
     contenedor.appendChild(new_div);
 
     resetear_form();
