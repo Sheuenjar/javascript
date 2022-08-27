@@ -21,6 +21,7 @@ let arreglo_usuarios = new Array();
 arreglo_usuarios.push(new Usuarios("Sheuen","sheuen@gmail.com","password"));
 arreglo_usuarios.push(new Usuarios("Lucia","lucia@gmail.com","password"));
 
+
 //valida para iniciar sesion
 function validar_usuario(nombre,email,contrasenia){
     let i = 0;
@@ -80,7 +81,7 @@ function iniciar_sesion(){
 //Registro nuevo Usuario (funcion)
 function pedir_registro(){
     let nombre = prompt("Ingresa tu nombre");
-    while(nombre == "" || nombre === null || parseInt(nombre)){
+    while(nombre == "" || parseInt(nombre) || nombre === null){
         alert("Ingresa tu nombre correctamente");
         nombre = prompt("Ingresa tu nombre");
     }
@@ -100,6 +101,8 @@ function pedir_registro(){
     }else if(validacion < 0) {
         arreglo_usuarios.push(new Usuarios(nombre,email,contrasenia));
         alert("Te registraste correctamente, a continuacion inicia sesion para confirmar tu cuenta");
-        iniciar_sesion();
     }
 }
+
+
+

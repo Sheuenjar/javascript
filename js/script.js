@@ -2,7 +2,7 @@
 
 
 //APLICA FUNCIONES - aca empieza a interactuar con el usuario
-let menu = true;
+/* let menu = true;
 while (menu){
     let opciones = "Que te gustaria realizar?";
     opciones += "\n1) Iniciar sesion";
@@ -34,7 +34,7 @@ while (menu){
             alert("No ingresaste una opcion valida");
     }
 }
-
+ */
 
 
 /* EVENTOS */
@@ -44,7 +44,19 @@ let titulo = document.getElementById("titulo");
 /* titulo.textContent = "Selecciona los Productos"; */
 
 
+// INICIAR SESION
 
+//declaro boton para iniciar sesion
+let btn_iniciar_sesion = document.getElementById('btn_iniciar_sesion');
+btn_iniciar_sesion.addEventListener('click',()=>{
+    iniciar_sesion();
+})
+
+//declaro boton para registrarme
+let btn_registrarte = document.getElementById('btn_registrate');
+btn_registrarte.addEventListener('click',()=>{
+    pedir_registro();
+})
 
 
 

@@ -19,9 +19,13 @@ function validar_formulario(){
     let input_piedra = document.getElementById('piedraProducto').value;
     let input_categoria = document.getElementById('categoriaProducto').value;
     let input_precio = document.getElementById('precioProducto').value;
+    let input_id = document.getElementById('idProducto').value;
     //arreglo mensajes de error
     let arreglo_mensajes = new Array();
     //pushea al arreglo cada mensaje si la condicion se cumple
+    if (!input_id){
+        arreglo_mensajes.push('No ingresaste la ID del producto')
+    }
     if (!input_nombre){
         arreglo_mensajes.push('No ingresaste el nombre del producto');
     }
@@ -60,9 +64,10 @@ function generarProducto(){
     let piedra = document.getElementById('piedraProducto').value;
     let categoria = document.getElementById('categoriaProducto').value;
     let precio = document.getElementById('precioProducto').value;
+    let id = document.getElementById('idProducto').value;
 
     //crea el objeto
-    let producto = new Productos(nombre,piedra,categoria,precio);
+    let producto = new Productos(nombre,piedra,categoria,precio,id);
     //pusheo el objeto al array
     arreglo_productos.push(producto);
 
@@ -77,6 +82,7 @@ function resetear_form(){
     document.getElementById('piedraProducto').value = '';
     document.getElementById('categoriaProducto').value = '';
     document.getElementById('precioProducto').value = '';
+    document.getElementById('idProducto').value = '';
 }
 
 

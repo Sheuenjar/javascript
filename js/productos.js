@@ -110,3 +110,10 @@ function crearCajaCarrito(producto){
         crearCajaProducto(producto);
     })
 }
+
+
+
+
+
+
+
