@@ -49,22 +49,18 @@ function buscar_usuario(nombre,email){
 
 
 //Iniciar sesion (funcion)
+let btn_iniciar_sesion = document.getElementById('btn_iniciar_sesion');
+btn_iniciar_sesion.addEventListener('click',()=>{
+    if(validar_usuario()){
+        arreglo_usuarios[validacion].mostrar_bienvenida();
+        iniciar_sesion();
+    }
+})
+
 function iniciar_sesion(){
-    let nombre = prompt("Para iniciar sesion ingresa tu nombre");
-    while(nombre == "" || nombre === null || parseInt(nombre)){
-        alert("Ingresa tu nombre correctamente");
-        nombre = prompt("Para iniciar sesion ingresa tu nombre");
-    }
-    let email = prompt("Hola "+nombre+", ahora ingresa tu e-mail");
-    while(email == "" || email === null || parseInt(email)){
-        alert("Ingresa tu e-mail correctamente");
-        email = prompt("Hola "+nombre+", ahora ingresa tu e-mail");
-    }
-    let contrasenia = prompt("ingresa tu contraseña");
-    while(contrasenia == "" || contrasenia === null){
-        alert("ingresa una contraseña valida");
-        contrasenia = prompt("ingresa tu contraseña");
-    }
+    let nombre = document.getElementById('nombreUsurio').value;
+    let email = document.getElementById('emailUsuario').value;
+    let contrasenia = document.getElementById('contraseniaUsuario').value;
     let validacion = validar_usuario(nombre,email,contrasenia);
     if(validacion >= 0){
         arreglo_usuarios[validacion].mostrar_bienvenida();
