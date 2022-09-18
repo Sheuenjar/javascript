@@ -44,15 +44,13 @@ let titulo = document.getElementById("titulo");
 /* titulo.textContent = "Selecciona los Productos"; */
 
 
-// INICIAR SESION
 
-//declaro boton para iniciar sesion
-let btn_iniciar_sesion = document.getElementById('btn_iniciar_sesion');
-btn_iniciar_sesion.addEventListener('click',()=>{
-    iniciar_sesion();
-})
 
-//declaro boton para registrarme
+
+
+
+
+//REGISTRO
 let btn_registrarte = document.getElementById('btn_registrate');
 btn_registrarte.addEventListener('click',()=>{
     pedir_registro();

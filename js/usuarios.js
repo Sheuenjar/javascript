@@ -7,6 +7,7 @@ class Usuarios{
         this.contrasenia = contrasenia;
         this.activado = true;
     }
+    /* funcion exclusiva del Usuario */
     mostrar_bienvenida(){
         alert("Bienvenido/a "+this.nombre+"\n"+
         "Tus datos fueron guardados correctamente\n\n"+
@@ -18,12 +19,56 @@ class Usuarios{
 }
 // nuevo arreglo usuarios
 let arreglo_usuarios = new Array();
+let avisos_is = document.getElementById('avisosIS');
+//mis USUARIOS predefinidos
 arreglo_usuarios.push(new Usuarios("Sheuen","sheuen@gmail.com","password"));
 arreglo_usuarios.push(new Usuarios("Lucia","lucia@gmail.com","password"));
 
 
-//valida para iniciar sesion
-function validar_usuario(nombre,email,contrasenia){
+
+// INICIAR SESION
+
+//declaro boton para iniciar sesion
+let btn_iniciar_sesion = document.getElementById('btn_iniciar_sesion');
+btn_iniciar_sesion.addEventListener('click', ()=> {
+    if(validarFormularioIs()){
+
+            iniciarSesion();
+    }
+})
+
+function validarFormularioIs(){
+    avisos_is.innerHTML = "";
+    let input_nombreUsuarioIs = document.getElementById('nombreUsuario').value;
+    let input_emailUsuarioIs = document.getElementById('emailUsuario').value;
+    let input_contraseniaUsuarioIs = document.getElementById('contraseniaUsuario').value;
+
+    let arreglo_mensajesIs = new Array();
+    if(!input_nombreUsuarioIs){
+        arreglo_mensajesIs.push('No ingresaste tu nombre de usuario');
+    }
+    if(!input_emailUsuarioIs){
+        arreglo_mensajesIs.push('No ingresaste tu e-mail');
+    }
+    if(!input_contraseniaUsuarioIs){
+        arreglo_mensajesIs.push('No ingresaste tu contraseña');
+    }
+    if(arreglo_mensajesIs.length>0){
+        //crea una lista
+        let lista = document.createElement('ul');
+        //contenido de la lista
+        lista.textContent = 'No fue posible cargar el producto: ';
+        // un li para cada input
+        arreglo_mensajesIs.forEach(element => {
+            //llama funcion crearLi()
+            lista.appendChild(crearLi(element));
+        });
+        avisos.appendChild(lista);
+    }
+    return arreglo_mensajesIs.length == 0;
+}
+
+function validar_usuario(nombreUsuario,emailUsuario,contraseniaUsuario){
     let i = 0;
     while(i < arreglo_usuarios.length){
         if(arreglo_usuarios[i].nombre == nombre && arreglo_usuarios[i].email == email && arreglo_usuarios[i].contrasenia == contrasenia){
@@ -34,29 +79,14 @@ function validar_usuario(nombre,email,contrasenia){
     return -1;
 }
 
-//busca que no exista ya el usuario para el registro
-function buscar_usuario(nombre,email){
-    let i = 0;
-    while(i < arreglo_usuarios.length){
-        if(arreglo_usuarios[i].nombre == nombre || arreglo_usuarios[i].email == email){
-           return i; 
-        }
-        i++;
-    }
-    return -1;
+
+function crearLi(){
+    let li = document.createElement('li');
+    li.textContent = mensaje;
+    return li;
 }
 
-
-
-//Iniciar sesion (funcion)
-let btn_iniciar_sesion = document.getElementById('btn_iniciar_sesion');
-btn_iniciar_sesion.addEventListener('click',()=>{
-    if(validar_usuario()){
-        arreglo_usuarios[validacion].mostrar_bienvenida();
-        iniciar_sesion();
-    }
-})
-
+//funcion INICIAR SESION
 function iniciar_sesion(){
     let nombre = document.getElementById('nombreUsurio').value;
     let email = document.getElementById('emailUsuario').value;
@@ -71,6 +101,29 @@ function iniciar_sesion(){
     }
 }
 
+
+function resetear_formIs(){
+    document.getElementById('nombreUsuario').value = '';
+    document.getElementById('emailUsuario').value = '';
+    document.getElementById('contraseniaUsuario').value = '';
+}
+
+
+
+
+
+//registro
+//busca que no exista ya el usuario para el registro
+function buscar_usuario(nombre,email){
+    let i = 0;
+    while(i < arreglo_usuarios.length){
+        if(arreglo_usuarios[i].nombre == nombre || arreglo_usuarios[i].email == email){
+           return i; 
+        }
+        i++;
+    }
+    return -1;
+}
 
 
 

@@ -6,13 +6,14 @@ let arreglo_carrito = new Array();
 let avisos = document.getElementById('avisos');
 //declaro boton para crear
 let btn_crear_producto = document.getElementById('btn_crear_producto');
-
+//escucho el click
 btn_crear_producto.addEventListener('click',()=>{
     if (validar_formulario()){
         generarProducto();
     }
 })
 
+//declaro contenido inputs && verifico que no este vacio
 function validar_formulario(){
     avisos.innerHTML = "";
     let input_nombre = document.getElementById('nombreProducto').value;
@@ -24,7 +25,7 @@ function validar_formulario(){
     let arreglo_mensajes = new Array();
     //pushea al arreglo cada mensaje si la condicion se cumple
     if (!input_id){
-        arreglo_mensajes.push('No ingresaste la ID del producto')
+        arreglo_mensajes.push('No ingresaste la ID del producto');
     }
     if (!input_nombre){
         arreglo_mensajes.push('No ingresaste el nombre del producto');
