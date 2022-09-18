@@ -95,14 +95,14 @@ function iniciarSesion(){
     let validacion = validar_usuario(nombre,email,contrasenia);
     if(validacion >= 0){
         arreglo_usuarios[validacion].mostrar_bienvenida();
-        comprar();
     }
     else if(validacion < 0){
         alert("Tu usuario, e-mail y/o contraseña no existe")
     }
+    resetear_formIs();
 }
 
-
+//restablecer formulario INICIO SESION
 function resetear_formIs(){
     document.getElementById('nombreUsuario').value = '';
     document.getElementById('emailUsuario').value = '';
@@ -113,7 +113,57 @@ function resetear_formIs(){
 
 
 
-//registro
+//REGISTRO
+let avisosRegistro = document.getElementById('avisosRegistro');
+
+//BOTON REGISTRO
+let btnRegistro = document.getElementById('btn_registrate');
+btnRegistro.addEventListener('click', ()=> {
+    if(validarFormularioR()){
+        iniciarRegistro();
+    }
+})
+
+//valida formulario para AVISOS
+function validarFormularioR(){
+    avisosRegistro.innerHTML = "";
+    let input_nombreUsuarioR = document.getElementById('nombreUsuarioR').value;
+    let input_emailUsuarioR = document.getElementById('emailUsuarioR').value;
+    let input_contraseniaUsuarioR = document.getElementById('contraseniaUsuarioR').value;
+    let input_contraseniaUsuarioRR = document.getElementById('contraseniaUsuarioRR').value;
+
+    let arreglo_mensajesRegistro = new Array();
+
+    if(!input_nombreUsuarioR){
+        arreglo_mensajesRegistro.push('No ingresaste tu nuevo nombre de Usuario');
+    }
+    if(!input_emailUsuarioR){
+        arreglo_mensajesRegistro.push('No ingresaste tu email para el registro');
+    }
+    if(!input_contraseniaUsuarioR){
+        arreglo_mensajesRegistro.push('No ingresaste tu contraseña para el Registro');
+    }
+    if(!input_contraseniaUsuarioRR){
+        arreglo_mensajesRegistro.push('No confirmaste tu contraseña para el Registro');
+    }
+    if(input_contraseniaUsuarioR != input_contraseniaUsuarioRR){
+        arreglo_mensajesRegistro.push('las contraseñas no coinciden')
+    }
+    if(arreglo_mensajesRegistro.length>0){
+        let listaR = document.createElement('ul');
+        listaR.textContent = 'No se pudo completar tu Registro: ';
+        arreglo_mensajesRegistro.forEach(element => {
+            listaR.appendChild(crearLi(element));
+        });
+        avisosRegistro.appendChild(listaR);
+    }
+    return arreglo_mensajesRegistro.length == 0;
+}
+
+
+
+
+
 //busca que no exista ya el usuario para el registro
 function buscar_usuario(nombre,email){
     let i = 0;
@@ -127,9 +177,30 @@ function buscar_usuario(nombre,email){
 }
 
 
+function iniciarRegistro(){
+    let nombre = document.getElementById('nombreUsuarioR').value;
+    let email = document.getElementById('emailUsuarioR').value;
+    let contrasenia = document.getElementById('contraseniaUsuarioR').value;
+    let validacion = buscar_usuario(nombre, email);
+    if(validacion>=0){
+        alert('Ya existe un usuario con ese nombre y/o e-mail');
+    }
+    else if(validacion<0){
+        arreglo_usuarios.push(new Usuarios(nombre, email, contrasenia));
+    }
+    resetear_formR();
+}
+
+function resetear_formR(){
+    document.getElementById('nombreUsuarioR').value = '';
+    document.getElementById('emailUsuarioR').value = '';
+    document.getElementById('contraseniaUsuarioR').value = '';
+    document.getElementById('contraseniaUsuarioRR').value = '';
+}
+
 
 //Registro nuevo Usuario (funcion)
-function pedir_registro(){
+/* function pedir_registro(){
     let nombre = prompt("Ingresa tu nombre");
     while(nombre == "" || parseInt(nombre) || nombre === null){
         alert("Ingresa tu nombre correctamente");
@@ -152,7 +223,7 @@ function pedir_registro(){
         arreglo_usuarios.push(new Usuarios(nombre,email,contrasenia));
         alert("Te registraste correctamente, a continuacion inicia sesion para confirmar tu cuenta");
     }
-}
+} */
 
 
 

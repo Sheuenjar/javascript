@@ -51,11 +51,11 @@ let titulo = document.getElementById("titulo");
 
 
 //REGISTRO
-let btn_registrarte = document.getElementById('btn_registrate');
+/* let btn_registrarte = document.getElementById('btn_registrate');
 btn_registrarte.addEventListener('click',()=>{
     pedir_registro();
 })
-
+ */
 
 
 
