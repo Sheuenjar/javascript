@@ -44,6 +44,7 @@ function validarFormularioIs(){
     let input_contraseniaUsuarioIs = document.getElementById('contraseniaUsuario').value;
 
     let arreglo_mensajesIs = new Array();
+
     if(!input_nombreUsuarioIs){
         arreglo_mensajesIs.push('No ingresaste tu nombre de usuario');
     }
@@ -63,12 +64,12 @@ function validarFormularioIs(){
             //llama funcion crearLi()
             lista.appendChild(crearLi(element));
         });
-        avisos.appendChild(lista);
+        avisos_is.appendChild(lista);
     }
     return arreglo_mensajesIs.length == 0;
 }
 
-function validar_usuario(nombreUsuario,emailUsuario,contraseniaUsuario){
+function validar_usuario(nombre,email,contrasenia){
     let i = 0;
     while(i < arreglo_usuarios.length){
         if(arreglo_usuarios[i].nombre == nombre && arreglo_usuarios[i].email == email && arreglo_usuarios[i].contrasenia == contrasenia){
@@ -80,15 +81,15 @@ function validar_usuario(nombreUsuario,emailUsuario,contraseniaUsuario){
 }
 
 
-function crearLi(){
+function crearLi(mensaje){
     let li = document.createElement('li');
     li.textContent = mensaje;
     return li;
 }
 
 //funcion INICIAR SESION
-function iniciar_sesion(){
-    let nombre = document.getElementById('nombreUsurio').value;
+function iniciarSesion(){
+    let nombre = document.getElementById('nombreUsuario').value;
     let email = document.getElementById('emailUsuario').value;
     let contrasenia = document.getElementById('contraseniaUsuario').value;
     let validacion = validar_usuario(nombre,email,contrasenia);
