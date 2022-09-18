@@ -187,6 +187,7 @@ function iniciarRegistro(){
     }
     else if(validacion<0){
         arreglo_usuarios.push(new Usuarios(nombre, email, contrasenia));
+        alert('Te registraste correctamente, iniciá sesion para confirmar la cuenta');
     }
     resetear_formR();
 }
